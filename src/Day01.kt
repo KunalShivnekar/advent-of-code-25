@@ -10,7 +10,19 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        var num = 50
+        var res = 0
+        input.forEach { line->
+            val dir = if(line.startsWith("R")) 1 else -1
+            val amt = line.drop(1).toInt()
+            repeat(amt){
+                num += dir
+                num %= 100
+                if(num == 0)
+                    res++
+            }
+        }
+        return res
     }
 
     // Test if implementation meets criteria from the description, like:
